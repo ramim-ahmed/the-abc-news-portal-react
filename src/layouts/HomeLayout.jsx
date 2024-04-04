@@ -1,3 +1,4 @@
+import LatestNews from "@/components/LatestNews";
 import NewsCategories from "@/components/NewsCategories";
 import TopHeader from "@/components/TopHeader";
 import { Outlet } from "react-router-dom";
@@ -6,7 +7,7 @@ export default function HomeLayout() {
   return (
     <div className="max-w-6xl mx-auto">
       <TopHeader />
-      <h1>latest news</h1>
+      <LatestNews />
       <nav>nav bar</nav>
       <div className="grid grid-cols-12 gap-4">
         <div className="col-span-3 border">
