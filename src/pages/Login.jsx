@@ -1,16 +1,17 @@
 import Nav from "@/components/Nav";
+import { Link } from "react-router-dom";
 
 export default function Login() {
   return (
-    <div className="bg-[#F3F3F3] h-screen">
+    <div className="bg-[#F3F3F3] min-h-screen">
       <div className="max-w-6xl mx-auto">
         <Nav />
         <div>
           <section className="text-gray-600 body-font relative">
             <div className="container px-5 py-24 mx-auto flex">
               <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:mx-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
-                <h2 className="text-gray-900 text-lg mb-1 font-medium title-font">
-                  Login Now!
+                <h2 className="text-gray-900 text-center text-lg mb-1 font-medium title-font">
+                  Login your account
                 </h2>
                 <div className="relative mb-4">
                   <label
@@ -44,8 +45,10 @@ export default function Login() {
                   login
                 </button>
                 <p className="text-xs text-gray-500 mt-3">
-                  Chicharrones blog helvetica normcore iceland tousled brook
-                  viral artisan.
+                  Don&rsquo;t have an account ?{" "}
+                  <Link className=" text-primary font-medium" to="/register">
+                    register
+                  </Link>
                 </p>
               </div>
             </div>
