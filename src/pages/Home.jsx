@@ -1,11 +1,14 @@
 import News from "@/components/News";
 import NewsItem from "@/components/NewsItem";
-
+import { useLoaderData } from "react-router-dom";
 export default function Home() {
+  const allNews = useLoaderData();
   return (
-    <div>
+    <div className="">
       <News>
-        <NewsItem />
+        {allNews?.map((news) => (
+          <NewsItem key={news?._id} news={news} />
+        ))}
       </News>
     </div>
   );
