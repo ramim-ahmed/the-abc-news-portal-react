@@ -1,7 +1,9 @@
 import { Link } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { useState } from "react";
+import useAuth from "@/hooks/useAuth";
 export default function RegisterForm() {
+  const { signup, firebaseError } = useAuth();
   const [isAgree, setIsAgree] = useState(false);
   const [passwordMatchError, setPasswordMatchError] = useState("");
   const {
@@ -12,11 +14,15 @@ export default function RegisterForm() {
 
   const handleRegister = (data) => {
     const { username, email, password, confirmPassword, photo_url } = data;
+    setPasswordMatchError("");
+    if (password.length < 6) {
+      return setPasswordMatchError("password must be six character!");
+    }
     if (password !== confirmPassword) {
       return setPasswordMatchError("Password not match!");
     }
-    if (isAgree & (password === confirmPassword)) {
-      console.log(data);
+    if (isAgree) {
+      signup(email, password, username, photo_url);
     }
   };
   return (
@@ -30,6 +36,11 @@ export default function RegisterForm() {
       {passwordMatchError && (
         <div>
           <p className=" text-red-500 py-3">{passwordMatchError}</p>
+        </div>
+      )}
+      {firebaseError && (
+        <div>
+          <p className=" text-red-500 py-3">{firebaseError}</p>
         </div>
       )}
       <div className="relative mb-4">
